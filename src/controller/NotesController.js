@@ -3,10 +3,10 @@ const knex = require("../database/knex")
 
 class NotesController{
     async create(request, response){
-        const {title, description, rating} = request.body
+        const {title, description, tags, rating} = request.body
         const {user_id} = request.params
 
-        await knex("movies_notes").insert({
+        const [note_id] = await knex("movies_notes").insert({
             title,
             description,
             rating,
@@ -21,8 +21,8 @@ class NotesController{
             }
             
         })
-        
-        await knex("tags").insert(tagsInsert)
+
+        await knex("movies_tags").insert(tagsInsert)
 
         response.json()
 
