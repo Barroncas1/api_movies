@@ -1,7 +1,9 @@
+const knex = require("../database/knex")
+
 
 class NotesController{
-    index(request, response){
-        
+    async create(request, response){
+    
     }
 }
 

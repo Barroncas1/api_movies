@@ -4,6 +4,17 @@ const express = require("express")
 const AppError = require("./utils/AppError")
 
 const app = express()
+
+app.get("/:id", (request, response) => {
+    const {id} = request.params
+
+    response.json({
+        "menssagem": "DEU CERTO",
+        "id": `${id}`
+    })
+})
+
+
 app.use(express.json())
 
 app.use((error, request, response, next) => {
