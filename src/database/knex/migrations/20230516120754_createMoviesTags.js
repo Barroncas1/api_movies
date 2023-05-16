@@ -1,8 +1,8 @@
 exports.up = knex => knex.schema.createTable("movies_tags", table => {
     table.increments("id").primary();
-    table.integer("user_id").references("id").inTable("users");
-    table.integer("note_id").references("id").inTable("movies_notes");
-    table.text("name");
+    table.integer("user_id").references("id").inTable("users").onDelete("CASCADE");
+    table.integer("note_id").references("id").inTable("movies_notes").onDelete("CASCADE");
+    table.text("name").notNullable();
 })
 
 exports.down = knex => knex.schema.dropTable("movies_tags")
